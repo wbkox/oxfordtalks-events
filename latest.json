@@ -49,8 +49,42 @@
    "l": "Where Leadership Becomes Visible"
   }
  ],
+ "more": [
+  {
+   "yt": "GFXBkl38S8o",
+   "title": "Re-Placed, Not Replaced",
+   "name": "Kari Zeller",
+   "slug": "kari-zeller",
+   "dur": 974,
+   "date": "2026-08-27"
+  },
+  {
+   "yt": "XK7Wi2rnO1M",
+   "title": "We cannot build AI systems without this key foundation",
+   "name": "Adam Johnson",
+   "slug": "adam-johnson",
+   "dur": 648,
+   "date": "2026-08-14"
+  },
+  {
+   "yt": "9EqJZ_sK4_E",
+   "title": "How Women Can Lead in AI",
+   "name": "Wiktoria Korbecka",
+   "slug": "wiktoria-korbecka",
+   "dur": 531,
+   "date": "2026-06-11"
+  },
+  {
+   "yt": "fAas9w6tp8Y",
+   "title": "Engineering Angelic Intelligence",
+   "name": "Shekhar Natarajan",
+   "slug": "shekhar-natarajan",
+   "dur": 711,
+   "date": "2026-05-01"
+  }
+ ],
  "poster": "https://wbkox.github.io/oxfordtalks-events/latest/gtknewu-61o-poster.jpg",
  "sprite": "https://wbkox.github.io/oxfordtalks-events/latest/gtknewu-61o-sprite.jpg",
  "frames": 40,
- "written": "2026-09-12T18:13:41Z"
+ "written": "2026-09-12T18:30:24Z"
 }

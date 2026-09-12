@@ -5,7 +5,8 @@ sync-latest: find the newest talk on the Oxford Talks YouTube channel and write 
 Reads the channel's public RSS feed (no key), keeps talks only (no Shorts, no podcast episodes),
 and for the newest one writes:
 
-  latest.json              the talk: id, title, orator, date, length, chapters, links, images
+  latest.json              the talk: id, title, orator, date, length, chapters, links, images,
+                           plus "more": the next newest talks the site lists (one per orator, up to four)
   latest.js                window.OT_LATEST={...}; served by GitHub Pages, loaded by oxfordtalks.io
   latest/<id>-poster.jpg   YouTube's own still, 1280x720
   latest/<id>-sprite.jpg   40 frames of the talk side by side, 384x216 each, for the hover scrub
@@ -125,7 +126,16 @@ def main():
     v = talks[0]
     title, name = [s.strip() for s in v["title"].split(" | ")[:2]]
     dur = watch(v["id"])
-    arc = site_data().get(v["id"], {})
+    site = site_data()
+    arc = site.get(v["id"], {})
+    # the next newest talks the site lists (its own editorial list), one per orator, other orators only, at most four
+    more = []
+    for a in sorted(site.values(), key=lambda a: a.get("date", ""), reverse=True):
+        if a["yt"] == v["id"] or a.get("speaker") == name or any(m["name"] == a.get("speaker") for m in more): continue
+        mm, ss = (a.get("dur") or "0:00").split(":")
+        more.append({"yt": a["yt"], "title": a.get("title"), "name": a.get("speaker"), "slug": a.get("slug"),
+                     "dur": int(mm) * 60 + int(ss), "date": a.get("date")})
+        if len(more) == 4: break
     if not dur and arc.get("dur"):
         mm, ss = arc["dur"].split(":"); dur = int(mm) * 60 + int(ss)
     slug = arc.get("slug") or slugify(name)
@@ -133,7 +143,7 @@ def main():
     poster, sprite = media(v["id"], dur)
     out = {"yt": v["id"], "title": title, "name": name, "date": v["published"], "dur": dur or 0,
            "fellow": arc.get("label") == "Fellow", "slug": slug if img else None, "portrait": img,
-           "ch": chapters(v["desc"]), "poster": poster, "sprite": sprite, "frames": FRAMES,
+           "ch": chapters(v["desc"]), "more": more, "poster": poster, "sprite": sprite, "frames": FRAMES,
            "written": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
     (ROOT / "latest.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     (ROOT / "latest.js").write_text(
