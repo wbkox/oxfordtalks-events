@@ -26,3 +26,13 @@ Published a talk and want it up now? Run the workflow from the Actions tab. Talk
 their titles ("Title | Orator"); Shorts and podcast episodes are skipped. Chapters appear when the
 description carries "0:00 Title" lines. The hover strip needs the video download to succeed on the
 runner; if YouTube refuses it, the still ships alone and the next successful run adds the strip.
+
+## View counts
+
+`views.js` and `views.json` hold the YouTube view count of every published talk, keyed by video id,
+refreshed by the same Action every morning. The Talks page on the site loads `views.js` and sorts
+"Most watched" on it, so the order follows YouTube by itself. The talks counted are listed in
+`views-ids.json`; add a line when a talk is published.
+
+    https://wbkox.github.io/oxfordtalks-events/views.js
+

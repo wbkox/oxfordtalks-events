@@ -1,4 +1,4 @@
-name: Sync events from Luma and the latest talk from YouTube
+name: Sync events from Luma, the latest talk and view counts from YouTube
 
 # Daily at 06:00 UTC, and by hand from the Actions tab after adding or changing an event on Luma
 # or publishing a talk on YouTube.
@@ -22,9 +22,11 @@ jobs:
         run: python3 -m pip install -q --user yt-dlp
       - name: Find the latest talk on YouTube
         run: python3 scripts/sync-latest.py
+      - name: Count the views on every talk
+        run: python3 scripts/sync-views.py
       - name: Commit if anything changed
         run: |
           git config user.name "oxfordtalks-events bot"
           git config user.email "noreply@oxfordtalks.io"
-          git add events.json events.js latest.json latest.js latest
-          git diff --cached --quiet && echo "no change" || git commit -m "Events and latest talk, $(date -u +%Y-%m-%d)" && git push
+          git add events.json events.js latest.json latest.js latest views.json views.js
+          git diff --cached --quiet && echo "no change" || git commit -m "Events, latest talk and view counts, $(date -u +%Y-%m-%d)" && git push
