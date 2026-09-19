@@ -9,6 +9,10 @@ and the site's homepage loads `events.js` from GitHub Pages:
 To refresh sooner, run the "Sync events from Luma" workflow from the Actions tab.
 Nothing here is private: every event listed is public on Luma.
 
+Each event carries `h`, the hosts who have a photo on Luma, guests before the Oxford Talks team,
+so the homepage card can show the face of whoever is on the bill; plus `ap`, whether Luma asks
+for approval, and `sr`, the places left.
+
 ## Latest talk
 
 `latest.js` and `latest.json` hold the newest talk on the Oxford Talks YouTube channel: title,

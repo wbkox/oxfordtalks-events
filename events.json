@@ -10,6 +10,22 @@
   "l": "London · Chester House",
   "p": "Free",
   "so": false,
+  "h": [
+   {
+    "n": "Waleed Khalid",
+    "a": "https://images.lumacdn.com/uploads/9h/85a732df-9401-46b0-9ac1-d1e76746229b.png"
+   },
+   {
+    "n": "Wiktoria Korbecka",
+    "a": "https://images.lumacdn.com/uploads/xo/64faacb1-bb59-49ce-9276-1ed997230e6c.jpg"
+   },
+   {
+    "n": "Stripe Community",
+    "a": "https://images.lumacdn.com/avatars/o0/91653c2b-8407-452f-8b8b-ed0a9ddce76c.png"
+   }
+  ],
+  "ap": true,
+  "sr": 15,
   "t": "Event",
   "w": "Hosted by Oxford Talks"
  },
@@ -24,6 +40,22 @@
   "l": "London · Chester House",
   "p": "Free",
   "so": false,
+  "h": [
+   {
+    "n": "Pawel Hajdan",
+    "a": "https://images.lumacdn.com/uploads/q3/e0116c49-48b7-434c-a87a-c088284a49b2.jpg"
+   },
+   {
+    "n": "Waleed Khalid",
+    "a": "https://images.lumacdn.com/uploads/9h/85a732df-9401-46b0-9ac1-d1e76746229b.png"
+   },
+   {
+    "n": "Wiktoria Korbecka",
+    "a": "https://images.lumacdn.com/uploads/xo/64faacb1-bb59-49ce-9276-1ed997230e6c.jpg"
+   }
+  ],
+  "ap": true,
+  "sr": 15,
   "t": "Salon",
   "w": "With Pawel Hajdan"
  },
@@ -38,6 +70,22 @@
   "l": "London",
   "p": "£250",
   "so": false,
+  "h": [
+   {
+    "n": "Anthony Smith",
+    "a": "https://cdn.lu.ma/avatars-default/avatar_10.png"
+   },
+   {
+    "n": "Waleed Khalid",
+    "a": "https://images.lumacdn.com/uploads/9h/85a732df-9401-46b0-9ac1-d1e76746229b.png"
+   },
+   {
+    "n": "Michaela",
+    "a": "https://cdn.lu.ma/avatars-default/avatar_19.png"
+   }
+  ],
+  "ap": false,
+  "sr": 23,
   "t": "Event",
   "w": "With Anthony Smith"
  },
@@ -52,6 +100,22 @@
   "l": "Oxford · Rhodes House",
   "p": "Free",
   "so": false,
+  "h": [
+   {
+    "n": "Waleed Khalid",
+    "a": "https://images.lumacdn.com/uploads/9h/85a732df-9401-46b0-9ac1-d1e76746229b.png"
+   },
+   {
+    "n": "Michaela",
+    "a": "https://cdn.lu.ma/avatars-default/avatar_19.png"
+   },
+   {
+    "n": "Stripe Community",
+    "a": "https://images.lumacdn.com/avatars/o0/91653c2b-8407-452f-8b8b-ed0a9ddce76c.png"
+   }
+  ],
+  "ap": false,
+  "sr": 15,
   "t": "Event",
   "w": "Hosted by Oxford Talks"
  },
@@ -66,6 +130,22 @@
   "l": "Online",
   "p": "Free",
   "so": false,
+  "h": [
+   {
+    "n": "Waleed Khalid",
+    "a": "https://images.lumacdn.com/uploads/9h/85a732df-9401-46b0-9ac1-d1e76746229b.png"
+   },
+   {
+    "n": "Michaela",
+    "a": "https://cdn.lu.ma/avatars-default/avatar_19.png"
+   },
+   {
+    "n": "Stripe Community",
+    "a": "https://images.lumacdn.com/avatars/o0/91653c2b-8407-452f-8b8b-ed0a9ddce76c.png"
+   }
+  ],
+  "ap": false,
+  "sr": null,
   "t": "Event",
   "w": "Hosted by Oxford Talks"
  }

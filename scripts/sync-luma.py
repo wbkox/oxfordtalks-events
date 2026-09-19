@@ -42,6 +42,9 @@ def norm(entry):
     loc = " · ".join(x for x in [geo.get("city"), geo.get("address")] if x) if geo else ("Online" if ev.get("location_type") in ("zoom", "online", "google_meet") else "")
     hosts = [h.get("name", "") for h in entry.get("hosts", [])]
     guests = [h for h in hosts if h not in TEAM]
+    # carry each host's own face, guests before the team, so a card can show who is running it
+    faces = sorted((h for h in entry.get("hosts", []) if h.get("avatar_url")),
+                   key=lambda h: h.get("name", "") in TEAM)
     ti = entry.get("ticket_info") or {}
     return {
         "id": ev["api_id"],
@@ -52,6 +55,9 @@ def norm(entry):
         "l": loc,
         "p": money(ti),
         "so": bool(ti.get("is_sold_out")),
+        "h": [{"n": h.get("name", ""), "a": h["avatar_url"]} for h in faces][:3],
+        "ap": bool(ti.get("require_approval")),
+        "sr": ti.get("spots_remaining"),
         "t": "Salon" if "salon" in ev["name"].lower() else "Event",
         "w": ("With " + guests[0]) if guests else "Hosted by Oxford Talks",
     }
