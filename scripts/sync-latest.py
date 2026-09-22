@@ -143,6 +143,12 @@ def main():
         if len(more) == 4: break
     if not dur and arc.get("dur"):
         mm, ss = arc["dur"].split(":"); dur = int(mm) * 60 + int(ss)
+    if not dur:                              # YouTube sometimes withholds the watch page from the runner:
+        try:                                 # keep the length we already had for this talk rather than 0
+            was = json.loads((ROOT / "latest.json").read_text(encoding="utf-8"))
+            if was.get("yt") == v["id"] and was.get("dur"): dur = was["dur"]
+        except Exception:
+            pass
     slug = arc.get("slug") or slugify(name)
     img = portrait(slug)
     poster, sprite = media(v["id"], dur)
