@@ -5,8 +5,8 @@
  "date": "2026-09-22",
  "dur": 571,
  "fellow": false,
- "slug": null,
- "portrait": null,
+ "slug": "mostafa-essa",
+ "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6ab2a176884ff0de3ea9935f_6ab29fcebd548101a98a68a3_p-mostafa-essa.jpeg",
  "ch": [
   {
    "t": 0,
@@ -106,5 +106,5 @@
  "poster": "https://wbkox.github.io/oxfordtalks-events/latest/DORUH_ZTatg-poster.jpg",
  "sprite": "https://wbkox.github.io/oxfordtalks-events/latest/DORUH_ZTatg-sprite.jpg",
  "frames": 40,
- "written": "2026-09-22T15:16:42Z"
+ "written": "2026-09-22T18:59:15Z"
 }
