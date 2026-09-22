@@ -14,7 +14,7 @@ left out, so the page keeps the number it already had rather than showing a zero
 Writes views.js (window.OT_VIEWS = { "<yt id>": <views>, ... }) and views.json, at the repo root,
 where GitHub Pages serves them:  https://wbkox.github.io/oxfordtalks-events/views.js
 """
-import json, subprocess, sys, pathlib, datetime, shutil
+import json, subprocess, sys, pathlib, datetime, shutil, re
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 IDS  = ROOT / 'views-ids.json'
@@ -33,9 +33,32 @@ def fetch(ids):
                 out[parts[0]] = int(parts[1])
     return out
 
+def fetch_pages(ids):
+    """The watch page carries the count too. Used when YouTube refuses yt-dlp on the runner
+    (every run from 20 to 22 Sep 2026 came back 0 of 56), since plain page reads still work."""
+    out = {}
+    for i in ids:
+        r = subprocess.run(['curl', '-sSL', '--max-time', '30', '-A', 'Mozilla/5.0 (oxfordtalks-events)',
+                            f'https://www.youtube.com/watch?v={i}'], capture_output=True, check=False)
+        m = re.search(rb'"viewCount":"(\d+)"', r.stdout)
+        if m: out[i] = int(m.group(1))
+    return out
+
+# counts move slowly and the job runs hourly: count once a day
+prev = ROOT / 'views.js'
+if prev.exists() and '--force' not in sys.argv:
+    m = re.search(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC', prev.read_text(encoding='utf-8')[:400])
+    if m:
+        age = datetime.datetime.now(datetime.timezone.utc) - datetime.datetime.strptime(m.group(1), '%Y-%m-%d %H:%M').replace(tzinfo=datetime.timezone.utc)
+        if age < datetime.timedelta(hours=20):
+            sys.exit(print(f'counted {age.seconds // 3600}h ago; next count after 20h') or 0)
+
 talks = json.load(open(IDS, encoding='utf-8'))
 ids = [t['yt'] for t in talks]
 views = fetch(ids)
+if len(views) < len(ids) * 0.8:
+    print(f'yt-dlp returned {len(views)} of {len(ids)}; reading the watch pages instead')
+    views.update({k: v for k, v in fetch_pages([i for i in ids if i not in views]).items()})
 missing = [i for i in ids if i not in views]
 if len(views) < len(ids) * 0.8:
     sys.exit(f'only {len(views)} of {len(ids)} counts came back; keeping the previous files')

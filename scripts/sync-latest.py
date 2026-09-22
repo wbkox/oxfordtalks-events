@@ -86,10 +86,15 @@ def site_data():
     return {t["yt"]: t for t in D.get("arcdata", [])}
 
 def portrait(slug):
-    page = curl(f"{SITE}/speakers/{slug}")
-    if not page or "og:image" not in page: return None
+    """The orator page's image, only if the page exists. A missing page is Webflow's 404, which still
+    carries the site-wide share image; that is not a portrait, so the tile goes without one instead."""
+    r = subprocess.run(["curl", "-sSL", "--max-time", "30", "-A", "Mozilla/5.0 (oxfordtalks-events)",
+                        "-w", "\n%{http_code}", f"{SITE}/speakers/{slug}"], capture_output=True, check=False)
+    page, _, code = r.stdout.decode("utf-8", "replace").rpartition("\n")
+    if r.returncode != 0 or code.strip() != "200" or "og:image" not in page: return None
     m = re.search(r'<meta content="([^"]+)" property="og:image"', page) or re.search(r'property="og:image" content="([^"]+)"', page)
-    return m.group(1) if m else None
+    if not m or "og-share" in m.group(1): return None
+    return m.group(1)
 
 def media(vid, dur):
     MEDIA.mkdir(exist_ok=True)
@@ -145,6 +150,13 @@ def main():
            "fellow": arc.get("label") == "Fellow", "slug": slug if img else None, "portrait": img,
            "ch": chapters(v["desc"]), "more": more, "poster": poster, "sprite": sprite, "frames": FRAMES,
            "written": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+    # the job runs hourly: leave the files alone unless something other than the timestamp moved
+    try:
+        was = json.loads((ROOT / "latest.json").read_text(encoding="utf-8"))
+        if {k: v for k, v in was.items() if k != "written"} == {k: v for k, v in out.items() if k != "written"}:
+            print(f"latest talk unchanged: {name} · {title}"); return
+    except Exception:
+        pass
     (ROOT / "latest.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     (ROOT / "latest.js").write_text(
         "/* Oxford Talks: the newest talk on YouTube. Written daily by scripts/sync-latest.py in github.com/wbkox/oxfordtalks-events; read by the homepage of oxfordtalks.io. */\n"

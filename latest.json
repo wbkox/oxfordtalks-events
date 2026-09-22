@@ -1,55 +1,83 @@
 {
- "yt": "gtknewu-61o",
- "title": "The Hidden Challenge of Organisational Transformation",
- "name": "Hema Tallman",
- "date": "2026-08-28",
- "dur": 735,
- "fellow": true,
- "slug": "hema-tallman",
- "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6aa534725ad2aa2344eadaf2_6a9867ddba254945e42431f8_hema-portrait.jpeg",
+ "yt": "DORUH_ZTatg",
+ "title": "20 Years of Building AI",
+ "name": "Mostafa Essa",
+ "date": "2026-09-22",
+ "dur": 571,
+ "fellow": false,
+ "slug": null,
+ "portrait": null,
  "ch": [
   {
    "t": 0,
-   "l": "The Rearranged House and the Safe"
+   "l": "Twenty years building AI"
   },
   {
-   "t": 76,
-   "l": "Why Attention Is the Real Challenge"
+   "t": 41,
+   "l": "This is my Oxford Talk"
   },
   {
-   "t": 189,
-   "l": "The Envelope That Changed Everything"
+   "t": 51,
+   "l": "The meeting where everyone asked the wrong question"
   },
   {
-   "t": 306,
-   "l": "The One Question That Shifts Everything"
+   "t": 87,
+   "l": "What the calculator took"
   },
   {
-   "t": 341,
-   "l": "Where Resilience Advice Goes Wrong"
+   "t": 131,
+   "l": "The patent that made the antenna weaker"
   },
   {
-   "t": 403,
-   "l": "Rearranging the House on Purpose"
+   "t": 174,
+   "l": "Granted, then ignored"
   },
   {
-   "t": 515,
-   "l": "Practice One: Take Charge of Attention"
+   "t": 224,
+   "l": "What if AI is your pet"
   },
   {
-   "t": 570,
-   "l": "Practice Two: Chart a New Course"
+   "t": 243,
+   "l": "Now flip it"
   },
   {
-   "t": 605,
-   "l": "Practice Three: Become the Compass"
+   "t": 292,
+   "l": "Two children, and a question at bedtime"
   },
   {
-   "t": 658,
-   "l": "Where Leadership Becomes Visible"
+   "t": 332,
+   "l": "The machine that never says no"
+  },
+  {
+   "t": 346,
+   "l": "Why everyone is exhausted"
+  },
+  {
+   "t": 391,
+   "l": "Slow as a superpower"
+  },
+  {
+   "t": 427,
+   "l": "Three rules"
+  },
+  {
+   "t": 462,
+   "l": "Back to the meeting"
+  },
+  {
+   "t": 518,
+   "l": "AI is not the threat, it is the test"
   }
  ],
  "more": [
+  {
+   "yt": "gtknewu-61o",
+   "title": "The Hidden Challenge of Organisational Transformation",
+   "name": "Hema Tallman",
+   "slug": "hema-tallman",
+   "dur": 735,
+   "date": "2026-08-28"
+  },
   {
    "yt": "GFXBkl38S8o",
    "title": "Re-Placed, Not Replaced",
@@ -73,18 +101,10 @@
    "slug": "wiktoria-korbecka",
    "dur": 531,
    "date": "2026-06-11"
-  },
-  {
-   "yt": "fAas9w6tp8Y",
-   "title": "Engineering Angelic Intelligence",
-   "name": "Shekhar Natarajan",
-   "slug": "shekhar-natarajan",
-   "dur": 711,
-   "date": "2026-05-01"
   }
  ],
- "poster": "https://wbkox.github.io/oxfordtalks-events/latest/gtknewu-61o-poster.jpg",
- "sprite": "https://wbkox.github.io/oxfordtalks-events/latest/gtknewu-61o-sprite.jpg",
+ "poster": "https://wbkox.github.io/oxfordtalks-events/latest/DORUH_ZTatg-poster.jpg",
+ "sprite": "https://wbkox.github.io/oxfordtalks-events/latest/DORUH_ZTatg-sprite.jpg",
  "frames": 40,
- "written": "2026-09-19T10:37:44Z"
+ "written": "2026-09-22T15:00:25Z"
 }
