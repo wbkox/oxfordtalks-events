@@ -1,35 +1,5 @@
 [
  {
-  "id": "evt-P3dwM8tqSJrKgaD",
-  "n": "5 Lessons on building Exceptional Engineering Teams",
-  "s": "2026-09-30T15:00:00.000Z",
-  "e": "2026-09-30T17:00:00.000Z",
-  "tz": "Europe/London",
-  "u": "https://luma.com/sjwzt9jb",
-  "c": "https://images.lumacdn.com/uploads/gg/7ad6288c-6703-4c39-ab11-49cdea9f68e2.png",
-  "l": "London · Chester House",
-  "p": "Free",
-  "so": false,
-  "h": [
-   {
-    "n": "Waleed Khalid",
-    "a": "https://images.lumacdn.com/uploads/9h/85a732df-9401-46b0-9ac1-d1e76746229b.png"
-   },
-   {
-    "n": "Wiktoria Korbecka",
-    "a": "https://images.lumacdn.com/uploads/xo/64faacb1-bb59-49ce-9276-1ed997230e6c.jpg"
-   },
-   {
-    "n": "Stripe Community",
-    "a": "https://images.lumacdn.com/avatars/o0/91653c2b-8407-452f-8b8b-ed0a9ddce76c.png"
-   }
-  ],
-  "ap": true,
-  "sr": 15,
-  "t": "Event",
-  "w": "Hosted by Oxford Talks"
- },
- {
   "id": "evt-NICG9oKFJ3iCAva",
   "n": "Oxford Talks Salon | Pawel Hajdan",
   "s": "2026-10-20T15:00:00.000Z",
