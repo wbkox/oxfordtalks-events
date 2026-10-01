@@ -1,56 +1,52 @@
 {
- "yt": "ITmV2DDQ4-c",
- "title": "AI will never replace human creativity",
- "name": "Laraib Atta",
- "date": "2026-09-30",
+ "yt": "SvtGdibhFWM",
+ "title": "You Need an Intelligence Strategy, Not an AI Strategy",
+ "name": "Kari Zeller",
+ "date": "2026-10-01",
  "dur": 0,
  "fellow": false,
- "slug": null,
- "portrait": null,
+ "slug": "kari-zeller",
+ "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6aa534725ad2aa2344eadad5_6a9eb4dfb4786985f8132948_kari-zeller.jpeg",
  "ch": [
   {
    "t": 0,
-   "l": "They called me mute"
+   "l": "Will I be replaced?"
   },
   {
-   "t": 66,
-   "l": "A path already drawn"
+   "t": 118,
+   "l": "What if work is our buffalo?"
   },
   {
-   "t": 135,
-   "l": "Building worlds at nine"
+   "t": 605,
+   "l": "Why executives see only a fraction"
   },
   {
-   "t": 150,
-   "l": "The only woman there"
+   "t": 1053,
+   "l": "A thousand voices from the front line"
   },
   {
-   "t": 230,
-   "l": "Where do ideas come from?"
+   "t": 1291,
+   "l": "We need an intelligence strategy"
   },
   {
-   "t": 307,
-   "l": "Difficulty is the source"
+   "t": 1500,
+   "l": "Will profit push the humans out?"
   },
   {
-   "t": 368,
-   "l": "What school rewards"
+   "t": 1836,
+   "l": "Thinking sovereignty and ancient wisdom"
   },
   {
-   "t": 441,
-   "l": "Think like machines"
+   "t": 2209,
+   "l": "What to do now: imagine it, value it"
   },
   {
-   "t": 470,
-   "l": "What AI leaves us"
+   "t": 2794,
+   "l": "Fear of not being fast enough"
   },
   {
-   "t": 511,
-   "l": "Believe in them"
-  },
-  {
-   "t": 544,
-   "l": "It will happen at the right time"
+   "t": 2996,
+   "l": "The two books she recommends most"
   }
  ],
  "more": [
@@ -71,24 +67,24 @@
    "date": "2026-08-28"
   },
   {
-   "yt": "GFXBkl38S8o",
-   "title": "Re-Placed, Not Replaced",
-   "name": "Kari Zeller",
-   "slug": "kari-zeller",
-   "dur": 974,
-   "date": "2026-08-27"
-  },
-  {
    "yt": "XK7Wi2rnO1M",
    "title": "We cannot build AI systems without this key foundation",
    "name": "Adam Johnson",
    "slug": "adam-johnson",
    "dur": 648,
    "date": "2026-08-14"
+  },
+  {
+   "yt": "9EqJZ_sK4_E",
+   "title": "How Women Can Lead in AI",
+   "name": "Wiktoria Korbecka",
+   "slug": "wiktoria-korbecka",
+   "dur": 531,
+   "date": "2026-06-11"
   }
  ],
- "poster": "https://wbkox.github.io/oxfordtalks-events/latest/ITmV2DDQ4-c-poster.jpg",
+ "poster": "https://wbkox.github.io/oxfordtalks-events/latest/SvtGdibhFWM-poster.jpg",
  "sprite": null,
  "frames": 40,
- "written": "2026-09-30T15:58:11Z"
+ "written": "2026-10-01T20:22:57Z"
 }
