@@ -1,5 +1,7 @@
 {
  "yt": "SvtGdibhFWM",
+ "kind": "episode",
+ "href": "https://www.oxfordtalks.io/podcast/you-need-an-intelligence-strategy-not-an-ai-strategy",
  "title": "You Need an Intelligence Strategy, Not an AI Strategy",
  "name": "Kari Zeller",
  "date": "2026-10-01",
@@ -86,5 +88,5 @@
  "poster": "https://wbkox.github.io/oxfordtalks-events/latest/SvtGdibhFWM-poster.jpg",
  "sprite": null,
  "frames": 40,
- "written": "2026-10-04T19:41:49Z"
+ "written": "2026-10-04T23:16:22Z"
 }
