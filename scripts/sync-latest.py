@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-sync-latest: find the newest talk on the Oxford Talks YouTube channel and write it for the homepage.
+sync-latest: find the newest talk or podcast episode on the Oxford Talks YouTube channel and write it
+for the homepage.
 
-Reads the channel's public RSS feed (no key), keeps talks only (no Shorts, no podcast episodes),
-and for the newest one writes:
+Reads the channel's public RSS feed (no key), keeps talks and podcast episodes (no Shorts), and for
+the newest one writes:
 
   latest.json              the talk: id, title, orator, date, length, chapters, links, images,
                            plus "more": the next newest talks the site lists (one per orator, up to four)
@@ -18,6 +19,12 @@ talk by someone not yet on the site still shows, without portrait or mark, until
 The sprite needs the video: yt-dlp + ffmpeg. If YouTube refuses the download (cloud runners are
 sometimes challenged), the poster still ships and the tile simply has no hover scrub until the next
 successful run. The homepage keeps its own fallback if this file is unreachable.
+
+"kind" is "talk" or "episode" (Waleed, 4 Oct 2026: the button "should adjust accordingly as new content
+appears"). An episode is one the site lists in its podcast data, or anything longer than TALK_MAX (the
+longest talk is 25:55). "href" is where the tile sends people: the orator page for a talk, the episode
+page for an episode (the podcast is never played on the homepage). "slug" is the orator page, when there
+is one, so the face and the name always open the person.
 """
 import json, re, subprocess, pathlib, datetime, sys, html, unicodedata, shutil
 
@@ -27,6 +34,7 @@ SITE = "https://www.oxfordtalks.io"
 PAGES = "https://wbkox.github.io/oxfordtalks-events"
 FRAMES, FW, FH = 40, 384, 216
 MEDIA = ROOT / "latest"
+TALK_MAX = 30 * 60
 
 def curl(url, binary=False, timeout=30):
     r = subprocess.run(["curl", "-sSL", "--max-time", str(timeout), "-A", "Mozilla/5.0 (oxfordtalks-events)", url],
@@ -57,6 +65,10 @@ def is_talk(v):
     if " | " not in t: return False          # every talk is "Title | Orator"
     return True
 
+def is_episode(v, eps):
+    if "/shorts/" in v["link"]: return False
+    return v["id"] in eps or bool(re.search(r"podcast|\bEP\s?\d+\b", v["title"], re.I))
+
 def watch(vid):
     """Length in seconds from the watch page; None if YouTube did not answer."""
     page = curl(f"https://www.youtube.com/watch?v={vid}")
@@ -75,15 +87,24 @@ def chapters(desc):
     return ch
 
 def site_data():
-    """arcdata from the live Talks page: yt -> {slug, label, dur}."""
+    """From the live Talks page data: arcdata yt -> {slug, label, dur}, and poddata episodes yt -> {slug, guest, speaker}."""
     page = curl(f"{SITE}/talks") or ""
     m = re.search(r'src="([^"]*ot-talks-data[^"]*\.js)"', page)
-    if not m: return {}
+    if not m: return {}, {}
     js = curl(m.group(1), timeout=60) or ""
     m = re.search(r"var D=(\{[\s\S]*?\});\s*(?:window|for|Object|\})", js)
     try: D = json.loads(m.group(1))
-    except Exception: return {}
-    return {t["yt"]: t for t in D.get("arcdata", [])}
+    except Exception: return {}, {}
+    return ({t["yt"]: t for t in D.get("arcdata", [])},
+            {e["yt"]: e for e in (D.get("poddata") or {}).get("eps", [])})
+
+def episode_portrait(vid):
+    """The episode page's guest portrait, from the site's episode data file (loaded by /listen)."""
+    page = curl(f"{SITE}/listen") or ""
+    m = re.search(r'src="([^"]*ot-extra[^"]*\.js)"', page)
+    js = m and curl(m.group(1), timeout=60) or ""
+    m = re.search(r'"' + re.escape(vid) + r'":\{[^}]*?portrait:"([^"]+)"', js)
+    return m.group(1) if m else None
 
 def portrait(slug):
     """The orator page's image, only if the page exists. A missing page is Webflow's 404, which still
@@ -125,13 +146,16 @@ def media(vid, dur):
             f"{PAGES}/latest/{sprite.name}" if sprite.exists() else None)
 
 def main():
-    talks = [v for v in feed() if is_talk(v)]
-    if not talks: sys.exit("no talk in the feed")
-    talks.sort(key=lambda v: v["published"], reverse=True)
-    v = talks[0]
-    title, name = [s.strip() for s in v["title"].split(" | ")[:2]]
+    site, eps = site_data()
+    items = [v for v in feed() if is_talk(v) or is_episode(v, eps)]
+    if not items: sys.exit("nothing in the feed")
+    items.sort(key=lambda v: v["published"], reverse=True)
+    v = items[0]
+    ep = eps.get(v["id"])
+    parts = [s.strip() for s in v["title"].split(" | ")]
+    title, name = (ep["title"] if ep else parts[0]), ((ep or {}).get("guest") or (parts[1] if len(parts) > 1 else ""))
     dur = watch(v["id"])
-    site = site_data()
+    kind = "episode" if (ep or is_episode(v, eps) or (dur and dur > TALK_MAX)) else "talk"
     arc = site.get(v["id"], {})
     # the next newest talks the site lists (its own editorial list), one per orator, other orators only, at most four
     more = []
@@ -149,25 +173,31 @@ def main():
             if was.get("yt") == v["id"] and was.get("dur"): dur = was["dur"]
         except Exception:
             pass
-    slug = arc.get("slug") or slugify(name)
+    slug = (ep or {}).get("speaker") or arc.get("slug") or slugify(name)
     img = portrait(slug)
+    page = slug if img else None              # the orator page exists only when it answered with a portrait
+    if kind == "episode":
+        img = img or episode_portrait(v["id"])
+        href = f"{SITE}/podcast/{ep['slug']}" if ep and ep.get("slug") else f"{SITE}/listen"
+    else:
+        href = f"{SITE}/speakers/{page}" if page else f"https://www.youtube.com/watch?v={v['id']}"
     poster, sprite = media(v["id"], dur)
-    out = {"yt": v["id"], "title": title, "name": name, "date": v["published"], "dur": dur or 0,
-           "fellow": arc.get("label") == "Fellow", "slug": slug if img else None, "portrait": img,
+    out = {"yt": v["id"], "kind": kind, "href": href, "title": title, "name": name, "date": v["published"], "dur": dur or 0,
+           "fellow": arc.get("label") == "Fellow", "slug": page, "portrait": img,
            "ch": chapters(v["desc"]), "more": more, "poster": poster, "sprite": sprite, "frames": FRAMES,
            "written": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
     # the job runs hourly: leave the files alone unless something other than the timestamp moved
     try:
         was = json.loads((ROOT / "latest.json").read_text(encoding="utf-8"))
         if {k: v for k, v in was.items() if k != "written"} == {k: v for k, v in out.items() if k != "written"}:
-            print(f"latest talk unchanged: {name} · {title}"); return
+            print(f"latest unchanged: {name} · {title}"); return
     except Exception:
         pass
     (ROOT / "latest.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     (ROOT / "latest.js").write_text(
-        "/* Oxford Talks: the newest talk on YouTube. Written daily by scripts/sync-latest.py in github.com/wbkox/oxfordtalks-events; read by the homepage of oxfordtalks.io. */\n"
+        "/* Oxford Talks: the newest talk or podcast episode on YouTube. Written daily by scripts/sync-latest.py in github.com/wbkox/oxfordtalks-events; read by the homepage of oxfordtalks.io. */\n"
         "window.OT_LATEST=" + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
-    print(f"latest talk: {name} · {title} · {v['published']} · {dur}s · {len(out['ch'])} chapters · sprite {'yes' if sprite else 'no'} · portrait {'yes' if img else 'no'}")
+    print(f"latest {kind}: {name} · {title} · {v['published']} · {dur}s · {len(out['ch'])} chapters · sprite {'yes' if sprite else 'no'} · portrait {'yes' if img else 'no'}")
 
 if __name__ == "__main__":
     main()
