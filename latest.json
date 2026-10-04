@@ -6,7 +6,7 @@
  "dur": 0,
  "fellow": false,
  "slug": "kari-zeller",
- "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6aa534725ad2aa2344eadad5_6a9eb4dfb4786985f8132948_kari-zeller.jpeg",
+ "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6ac2a24c49ce0a78f85df2f5_6ac29fe94d1c7bed973d8688_portrait-kari-zeller.jpeg",
  "ch": [
   {
    "t": 0,
@@ -51,6 +51,14 @@
  ],
  "more": [
   {
+   "yt": "ITmV2DDQ4-c",
+   "title": "AI will never replace human creativity",
+   "name": "Laraib Atta",
+   "slug": "laraib-atta",
+   "dur": 589,
+   "date": "2026-09-30"
+  },
+  {
    "yt": "DORUH_ZTatg",
    "title": "20 Years of Building AI",
    "name": "Mostafa Essa",
@@ -73,18 +81,10 @@
    "slug": "adam-johnson",
    "dur": 648,
    "date": "2026-08-14"
-  },
-  {
-   "yt": "9EqJZ_sK4_E",
-   "title": "How Women Can Lead in AI",
-   "name": "Wiktoria Korbecka",
-   "slug": "wiktoria-korbecka",
-   "dur": 531,
-   "date": "2026-06-11"
   }
  ],
  "poster": "https://wbkox.github.io/oxfordtalks-events/latest/SvtGdibhFWM-poster.jpg",
  "sprite": null,
  "frames": 40,
- "written": "2026-10-01T20:22:57Z"
+ "written": "2026-10-04T19:41:49Z"
 }
