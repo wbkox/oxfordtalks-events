@@ -1,54 +1,62 @@
 {
- "yt": "SvtGdibhFWM",
- "kind": "episode",
- "href": "https://www.oxfordtalks.io/podcast/you-need-an-intelligence-strategy-not-an-ai-strategy",
- "title": "You Need an Intelligence Strategy, Not an AI Strategy",
- "name": "Kari Zeller",
- "date": "2026-10-01",
+ "yt": "QGXUB6UkSso",
+ "kind": "talk",
+ "href": "https://www.oxfordtalks.io/speakers/vanessa-cardenas",
+ "title": "How Couples Grow Apart Without Realizing It",
+ "name": "Vanessa Cardenas",
+ "date": "2026-10-06",
  "dur": 0,
  "fellow": false,
- "slug": "kari-zeller",
- "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6ac2a24c49ce0a78f85df2f5_6ac29fe94d1c7bed973d8688_portrait-kari-zeller.jpeg",
+ "slug": "vanessa-cardenas",
+ "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6ac2a24d49ce0a78f85df381_6ac2a01fec4c01aed59e338d_portrait-vanessa-cardenas.jpeg",
  "ch": [
   {
    "t": 0,
-   "l": "Will I be replaced?"
+   "l": "How did we just grow apart?"
   },
   {
-   "t": 118,
-   "l": "What if work is our buffalo?"
+   "t": 100,
+   "l": "I edited myself before I spoke"
   },
   {
-   "t": 605,
-   "l": "Why executives see only a fraction"
+   "t": 121,
+   "l": "We weren't fighting"
   },
   {
-   "t": 1053,
-   "l": "A thousand voices from the front line"
+   "t": 187,
+   "l": "What the other person hears"
   },
   {
-   "t": 1291,
-   "l": "We need an intelligence strategy"
+   "t": 247,
+   "l": "The conversation that disappeared"
   },
   {
-   "t": 1500,
-   "l": "Will profit push the humans out?"
+   "t": 284,
+   "l": "\"I'm actually very lonely in this marriage\""
   },
   {
-   "t": 1836,
-   "l": "Thinking sovereignty and ancient wisdom"
+   "t": 355,
+   "l": "Normal from across the street"
   },
   {
-   "t": 2209,
-   "l": "What to do now: imagine it, value it"
+   "t": 410,
+   "l": "The silence got there first"
   },
   {
-   "t": 2794,
-   "l": "Fear of not being fast enough"
+   "t": 444,
+   "l": "Families and leadership teams do it too"
   },
   {
-   "t": 2996,
-   "l": "The two books she recommends most"
+   "t": 481,
+   "l": "The conversation you keep almost having"
+  },
+  {
+   "t": 515,
+   "l": "Can we talk about it?"
+  },
+  {
+   "t": 543,
+   "l": "What disappeared first"
   }
  ],
  "more": [
@@ -77,16 +85,16 @@
    "date": "2026-08-28"
   },
   {
-   "yt": "XK7Wi2rnO1M",
-   "title": "We cannot build AI systems without this key foundation",
-   "name": "Adam Johnson",
-   "slug": "adam-johnson",
-   "dur": 648,
-   "date": "2026-08-14"
+   "yt": "GFXBkl38S8o",
+   "title": "Re-Placed, Not Replaced",
+   "name": "Kari Zeller",
+   "slug": "kari-zeller",
+   "dur": 974,
+   "date": "2026-08-27"
   }
  ],
- "poster": "https://wbkox.github.io/oxfordtalks-events/latest/SvtGdibhFWM-poster.jpg",
+ "poster": "https://wbkox.github.io/oxfordtalks-events/latest/QGXUB6UkSso-poster.jpg",
  "sprite": null,
  "frames": 40,
- "written": "2026-10-04T23:16:22Z"
+ "written": "2026-10-06T20:24:38Z"
 }
