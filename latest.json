@@ -5,10 +5,10 @@
  "title": "How Couples Grow Apart Without Realizing It",
  "name": "Vanessa Cardenas",
  "date": "2026-10-06",
- "dur": 0,
- "fellow": false,
+ "dur": 600,
+ "fellow": true,
  "slug": "vanessa-cardenas",
- "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6ac2a24d49ce0a78f85df381_6ac2a01fec4c01aed59e338d_portrait-vanessa-cardenas.jpeg",
+ "portrait": "https://cdn.prod.website-files.com/6a98597d3ec49edce285e7d2/6acd3bf2b514c03c978f774d_6acd3aa3c6548560ff78a632_portrait-vanessa-cardenas-2.jpeg",
  "ch": [
   {
    "t": 0,
@@ -93,8 +93,8 @@
    "date": "2026-08-27"
   }
  ],
- "poster": "https://wbkox.github.io/oxfordtalks-events/latest/QGXUB6UkSso-poster.jpg",
+ "poster": "https://wbkox.github.io/oxfordtalks-events/latest/QGXUB6UkSso-poster.jpg?v=b801ef04",
  "sprite": null,
  "frames": 40,
- "written": "2026-10-06T20:24:38Z"
+ "written": "2026-10-12T20:25:09Z"
 }
