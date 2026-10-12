@@ -26,6 +26,7 @@ longest talk is 25:55). "href" is where the tile sends people: the orator page f
 page for an episode (the podcast is never played on the homepage). "slug" is the orator page, when there
 is one, so the face and the name always open the person.
 """
+import hashlib
 import json, re, subprocess, pathlib, datetime, sys, html, unicodedata, shutil
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -120,7 +121,8 @@ def portrait(slug):
 def media(vid, dur):
     MEDIA.mkdir(exist_ok=True)
     poster, sprite = MEDIA / f"{vid}-poster.jpg", MEDIA / f"{vid}-sprite.jpg"
-    if not poster.exists():
+    # Re-fetched every run: the thumbnail approved on YouTube can change after release (12 Oct 2026).
+    if True:
         for name in ("maxresdefault", "sddefault", "hqdefault"):
             b = curl(f"https://i.ytimg.com/vi/{vid}/{name}.jpg", binary=True)
             if b and len(b) > 5000 and b[:2] == b"\xff\xd8":
@@ -142,7 +144,7 @@ def media(vid, dur):
     # keep only this talk's files
     for f in MEDIA.iterdir():
         if not f.name.startswith(vid): f.unlink()
-    return (f"{PAGES}/latest/{poster.name}" if poster.exists() else f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+    return (f"{PAGES}/latest/{poster.name}?v={hashlib.md5(poster.read_bytes()).hexdigest()[:8]}" if poster.exists() else f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
             f"{PAGES}/latest/{sprite.name}" if sprite.exists() else None)
 
 def main():
